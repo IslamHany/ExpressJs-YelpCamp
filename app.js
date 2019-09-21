@@ -15,11 +15,12 @@ var campgroundRoutes = require("./routes/campgrounds");
 var indexRoutes = require("./routes/index");
 var moment = require("moment");
 const PORT = process.env.PORT || 3000;
+var url = process.env.DATABASEURL || "mongodb://localhost/yelp_camp";
 
 //We are making an environment database variable so we do not mess our data while testing on the local host
 //mongoose.connect("mongodb://localhost/yelp_camp", {useNewUrlParser: true});
 //process.env.DATABASEURL for heroku = mongodb+srv://islam:2532328050@cluster0-wbqvp.mongodb.net/test?retryWrites=true&w=majority
-mongoose.connect(process.env.DATABASEURL, {useNewUrlParser: true});
+mongoose.connect(url, {useNewUrlParser: true});
 app.use(bodyParser.urlencoded({extended: true}));
 app.set("view engine", "ejs");
 app.use(express.static(__dirname + "/public"));
