@@ -1,0 +1,23 @@
+<%include ../partials/header%>
+<div class="profile container">
+    <h1><%=user.username%>'s Profile</h1>
+    <%if(currentUser && user._id.equals(currentUser._id)){%>
+    <a class="add btn btn-primary btn-lg" href="/campgrounds/new">Add new campground</a>
+    <%}%>
+    <div class="row text-center" style="display:flex; flex-wrap:wrap;">
+        <% campgrounds.forEach(function(campground){%>
+        <div class="figure col-md-3 col-sm-6">
+            <div class="custom img-thumbnail">
+                <img class="figure-img img-fluid" src="<%= campground.image %>">
+                <div class="figure-caption">
+                    <h4><%= campground.name %></h4>
+                </div>
+                <p>
+                    <a href="/campgrounds/<%= campground._id %>" class="btn btn-primary">More Info</a>
+                </p>
+            </div>
+        </div>  
+        <%});%>
+    </div>
+</div>
+<%include ../partials/footer%>
