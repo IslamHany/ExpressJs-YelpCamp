@@ -40,7 +40,8 @@ router.get("/login", function(req, res){
 router.post("/login", passport.authenticate("local", {
     successRedirect: "/campgrounds", 
     failureRedirect: "/login",
-    failureFlash: true
+    failureFlash: true,
+    successFlash: 'Welcome Successfully Loged In!'
 }), function(req, res){
 });
 
